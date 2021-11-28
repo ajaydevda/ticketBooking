@@ -16,9 +16,9 @@ class FerryCell extends StatelessWidget {
 
   late int travelHour;
   late int travelMin;
+  VoidCallback onPressed;
 
-
-  FerryCell({required this.ticketData}){
+  FerryCell({required this.ticketData,required this.onPressed}){
     dateHandler=DateHandler();
 
     startHour=dateHandler.getHour(ticketData.startTime);
@@ -37,7 +37,7 @@ class FerryCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardDecoration(
-        padding: EdgeInsets.only(right: 15,top: 10,left: 15),
+        padding: EdgeInsets.only(right: 15,top: 20,left: 15),
         child: Padding(
           padding: const EdgeInsets.only(top: 20,bottom: 20),
           child: Row(
@@ -82,9 +82,9 @@ class FerryCell extends StatelessWidget {
                     SizedBox(
                       height: 30,
                       width: 100,
-                      child: SolidButton(onPressed: () {
-
-                      }, label: "Book Now",
+                      child: SolidButton(
+                        onPressed: onPressed,
+                        label: "Book Now",
                       ),
                     ),
 

@@ -5,9 +5,7 @@ import 'package:ticket_booking/Widgets/AddRemoveWidget/AddRemoveWidget.dart';
 class PassengerAdderWidget extends StatelessWidget {
   late Function getCount;
    int adult=0,child=0;
-  PassengerAdderWidget({required this.getCount}){
-    getCount(child,adult);
-  }
+  PassengerAdderWidget({required this.getCount});
 
   @override
   Widget build(BuildContext context) {

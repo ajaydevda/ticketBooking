@@ -12,7 +12,8 @@ class AppBar1 extends StatelessWidget
   Widget build(BuildContext context) {
     // TODO: implement build
    return AppBar(
-     backgroundColor: Colors.white,
+     backgroundColor: white,
+     elevation: 0,
      leading: Builder(
        builder: (context) => InkWell(
          onTap: () {
@@ -22,9 +23,9 @@ class AppBar1 extends StatelessWidget
            padding: const EdgeInsets.only(left: 20.0),
            child: Image.asset(
              userIcon,
-             fit: BoxFit.fill,
-             width: 60,
-             height: 60,
+            // fit: BoxFit.fill,
+             width: 40,
+             height: 40,
              color: Theme.of(context).colorScheme.primary,
            ),
          ),
@@ -36,7 +37,8 @@ class AppBar1 extends StatelessWidget
        mainAxisAlignment: MainAxisAlignment.spaceBetween,
        crossAxisAlignment: CrossAxisAlignment.center,
        children: [
-         Expanded(
+         Container(
+           width: 200,
            child: Text(
              leadingText ,
              maxLines: 2,

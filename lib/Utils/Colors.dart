@@ -9,3 +9,5 @@ const lightGray=const Color(0xFFebebeb);
 const darkGray=const Color(0xffc8c8c8);
 const black=const Color(0xff000000);
 const redColor=const Color(0xffff0000);
+const darkGreen =const Color(0xff447F46);
+const darkBlue =const Color(0xff06518b);

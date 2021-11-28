@@ -142,8 +142,8 @@ class Seats {
     required this.code,
     required this.status,
   });
-  late final String code;
-  late final String status;
+  late  String code;
+  late  String status;
 
   Seats.fromJson(Map<String, dynamic> json){
     code = json['code'];

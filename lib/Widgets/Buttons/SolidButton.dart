@@ -19,7 +19,7 @@ class SolidButton extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(blue1),
               ),
           onPressed: onPressed,
-          child: Text(label!,style: TextStyle(color: Colors.white),)),
+          child: Text(label!,style: Theme.of(context).textTheme.headline1!.copyWith(color: Colors.white),)),
     );
   }
 }
