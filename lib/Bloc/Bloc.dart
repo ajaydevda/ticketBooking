@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticket_booking/Bloc/Event.dart';
 import 'package:ticket_booking/Bloc/State.dart';
+import 'package:ticket_booking/Model/FerryBlockModel.dart';
 import 'package:ticket_booking/Model/FerrylistModel.dart';
 import 'package:ticket_booking/Model/LoginFailureResponseModel.dart';
 import 'package:ticket_booking/Model/LoginSuccessResponse.dart';
@@ -243,6 +244,39 @@ class AppBloc extends Bloc<AppEvents, AppState> {
         yield FailedState(message: e.toString());
       }
     }
+
+
+    else if(event is ReserveFerrySeat)
+      {
+        yield LoadingState();
+
+        try{
+          String jsonPost = json.encode(<String, dynamic>{
+            "sourceStation1": "${event.sourceStation1}",
+            "destinationStation1": "${event.destinationStation1}",
+            "ferryCode": event.ferryCode,
+            "totalPrice":"${event.totalPrice}",
+            "seats":event.seats
+          });
+
+          var response = await repoInstance.postApiResponseWithBearerToken(
+              api: reserveFerrySeats, jsonPostData: jsonPost);
+          var message = response['message'];
+          dynamic resData;
+
+          if (message!=null) {
+            yield FailedState(message: message);
+          } else {
+            resData = FerryBlockModel.fromJson(response);
+            yield ReserveFerrySuccessSeat(success: resData);
+          }
+        }
+        catch(e)
+        {
+          yield FailedState(message: e.toString());
+        }
+
+      }
 
   }
 }

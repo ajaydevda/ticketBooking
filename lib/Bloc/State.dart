@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_booking/Bloc/Event.dart';
+import 'package:ticket_booking/Model/FerryBlockModel.dart';
 import 'package:ticket_booking/Model/FerrylistModel.dart';
 import 'package:ticket_booking/Model/LoginFailureResponseModel.dart';
 import 'package:ticket_booking/Model/LoginSuccessResponse.dart';
@@ -130,3 +131,13 @@ class ListFerrySuccessState extends AppState {
   // TODO: implement props
   List<Object> get props => [success];
 }
+
+
+class ReserveFerrySuccessSeat extends AppState {
+  late final FerryBlockModel success;
+  ReserveFerrySuccessSeat({required this.success});
+  @override
+  // TODO: implement props
+  List<Object> get props => [success];
+}
+

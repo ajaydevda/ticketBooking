@@ -85,6 +85,7 @@ class _SeatLayoutState extends State<SeatLayout> {
                            var i=index+(3*di);
                             return SeatView(
                               seat: ticketData.deckes[0].seats[i],
+                              deckCode: ticketData.deckes[0].code,
                               add: widget.selectSeat,
                                onCheck: onCheck,
                               isEnabled: isEnabled,
@@ -95,6 +96,7 @@ class _SeatLayoutState extends State<SeatLayout> {
                           else{
                             return SeatView(
                                 seat: ticketData.deckes[0].seats[index],
+                                deckCode: ticketData.deckes[0].code,
                                 add: widget.selectSeat,
                                 isEnabled: isEnabled,
                                 onCheck: onCheck,
@@ -127,7 +129,8 @@ class _SeatLayoutState extends State<SeatLayout> {
                               remove: widget.removeSeat,
                               onCheck: onCheck,
                               isEnabled: isEnabled,
-                              seat: ticketData.deckes[0].seats[i]
+                              seat: ticketData.deckes[0].seats[i],
+                              deckCode: ticketData.deckes[0].code,
                             );
 
 

@@ -9,7 +9,8 @@ class SeatView extends StatefulWidget {
   Function remove;
   Function onCheck;
   bool isEnabled;
-  SeatView({required this.seat,required this.add,required this.remove,required this.onCheck,required this.isEnabled});
+  String deckCode;
+  SeatView({required this.seat,required this.add,required this.remove,required this.onCheck,required this.isEnabled,required this.deckCode});
   @override
   _SeatViewState createState() => _SeatViewState();
 }
@@ -68,7 +69,7 @@ class _SeatViewState extends State<SeatView> {
                   .primary;
             });
 
-            widget.remove(widget.seat.code);
+            widget.remove(widget.seat.code,widget.deckCode);
             widget.onCheck();
 
           }
@@ -80,7 +81,7 @@ class _SeatViewState extends State<SeatView> {
               status = SeatStatusEnum.selected;
               color = darkGreen;
             });
-            widget.add(widget.seat.code);
+            widget.add(widget.seat.code,widget.deckCode);
             widget.onCheck();
           }
 

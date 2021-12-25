@@ -100,3 +100,17 @@ class GetListOfFerryEvent extends AppEvents {
   // TODO: implement props
   List<Object> get props => [];
 }
+
+class ReserveFerrySeat extends AppEvents {
+  late final String sourceStation1;
+  late final String destinationStation1;
+  late final int ferryCode;
+  late final String totalPrice;
+  late final dynamic seats;
+
+  ReserveFerrySeat({required this.sourceStation1,required this.destinationStation1,required this.ferryCode,required this.totalPrice,this.seats});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}

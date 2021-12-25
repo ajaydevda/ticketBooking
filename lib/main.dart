@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ticket_booking/BookNewTicket/BookNewTicket.dart';
 import 'package:ticket_booking/DashBoard/DashBoardScreen.dart';
+import 'package:ticket_booking/PassengerDetails/PassengerDetailsScreen.dart';
 import 'package:ticket_booking/ResetPassword/ResetPasswordScreen.dart';
 import 'package:ticket_booking/SeatBooking/SelectSeatScreen.dart';
 import 'package:ticket_booking/Utils/Colors.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
         '/OtpVerificationScreen':(context) => const OtpVerificationScreen(),
         '/BookNewTicket':(context) => const BookNewTicket(),
         '/AvailableFerry':(context) => const AvailableFerry(),
-        '/SelectSeatScreen':(context) => const SelectSeatScreen()
+        '/SelectSeatScreen':(context) => const SelectSeatScreen(),
+        '/PassengerDetailsScreen':(context) => const PassengerDetailsScreen()
       },
 
       theme: ThemeData(

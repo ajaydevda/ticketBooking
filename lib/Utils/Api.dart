@@ -14,3 +14,4 @@ final String forgotPassword=domain+"customers/password/forgot";
 final String login=domain+"customers/login";
 final String getSourceDestination=domain1+"ferries/backofficeinfo";
 final String numOfFerries=domain1+"ferries/seats";
+final String reserveFerrySeats=domain1+"ferries/reserveFerrySeats";
