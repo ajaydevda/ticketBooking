@@ -1,12 +1,17 @@
 # Flutter build
 variables:
   projectDirectory: 'covid_19_tracker'
+
 trigger:
-- master
-jobs:
-  - job: Android
-    pool:
-      vmImage: 'macOS-latest'
+  - master
+
+stages:
+- stage: AndroidStage
+  pool:
+    vmImage: 'ubuntu-latest'
+  dependsOn: []
+  displayName: Android
+  jobs:
 
   - job: AndroidJob
     displayName: Android
@@ -30,3 +35,12 @@ jobs:
       inputs:
         target: 'apk'
         projectDirectory: '$(Build.SourcesDirectory)'
+
+    - task: CopyFiles@2
+      displayName: "Copy app to staging directory"
+      inputs:
+        sourceFolder: '$(Agent.BuildDirectory)'
+        contents: '**/bundle/**'
+        targetFolder: '$(Build.StagingDirectory)'
+        flattenFolders: true
+
