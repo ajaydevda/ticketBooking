@@ -22,7 +22,7 @@ stages:
       inputs:
         mode: 'auto'
         channel: 'stable'
-        version: '2.10.1'
+        customVersion: '3.0.1'
 
     - task: FlutterCommand@0
       displayName: "Run Flutter diagnostics"
