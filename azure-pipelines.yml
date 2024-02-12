@@ -7,11 +7,6 @@ trigger:
 
 stages:
 
-- script: |
-    df -h
-    du -sh .
-  displayName: 'Check Disk Space'
-  
 - stage: AndroidStage
   pool:
     vmImage: 'ubuntu-latest'
