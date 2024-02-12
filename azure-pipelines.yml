@@ -44,6 +44,6 @@ stages:
       inputs:
         sourceFolder: '$(Agent.BuildDirectory)'
         contents: '**/bundle/**'
-        targetFolder: 'https://drive.google.com/drive/folders/1tMF8FhqFLjnUSnKbDeXxtfdJO7B0j_LH?usp=sharing'
+        targetFolder: '$(Build.StagingDirectory)'
         flattenFolders: true
 
