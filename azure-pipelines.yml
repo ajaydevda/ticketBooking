@@ -1,14 +1,10 @@
 # Flutter build
 name: $(Rev:r)
 
-variables:
-  projectDirectory: 'covid_19_tracker'
-
 trigger:
-  - master
+  - UATSuper
 
 stages:
-
 - stage: AndroidStage
   pool:
     vmImage: 'macos-latest'
@@ -20,12 +16,37 @@ stages:
     displayName: Android
     steps: 
 
+    # replace "key.properties" with your secure file name
+    - task: DownloadSecureFile@1
+      name: keyprop
+      displayName: Download key properties file
+      inputs:
+        secureFile: 'key.properties' 
+
+    # replace "key.jks" with your secure file name
+    - task: DownloadSecureFile@1
+      name: key
+      displayName: Download signing key
+      inputs:
+        secureFile: 'key.jks'
+
+    # adjust paths and file names here
+    - task: Bash@3
+      displayName: Copy config files
+      inputs:
+        targetType: 'inline'
+        script: |
+          cp $(keyprop.secureFilePath) $(Build.SourcesDirectory)/android/key.properties
+          cp $(key.secureFilePath) $(Build.SourcesDirectory)/android/app/key.jks
+          
+          echo "key.properties copied to $(Build.SourcesDirectory)/android/key.properties"
+          echo "key.jks copied to $(Build.SourcesDirectory)/android/app/key.jks"
     - task: FlutterInstall@0
       displayName: "Install Flutter SDK"
       inputs:
         mode: 'auto'
         channel: 'stable'
-        customVersion: '2.10.0'
+        customVersion: '3.0.1'
 
     - task: FlutterCommand@0
       displayName: "Run Flutter diagnostics"
@@ -36,7 +57,13 @@ stages:
     - task: FlutterBuild@0
       displayName: "Build application"
       inputs:
-        target: 'apk'
+        target: 'aab'
+        projectDirectory: '$(Build.SourcesDirectory)'
+
+    - task: FlutterTest@0
+      displayName: "Run unit tests"
+      inputs:
+        generateCodeCoverageReport: true
         projectDirectory: '$(Build.SourcesDirectory)'
 
     - task: CopyFiles@2
@@ -47,3 +74,9 @@ stages:
         targetFolder: '$(Build.StagingDirectory)'
         flattenFolders: true
 
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish AAB file"
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'AAB'
+        publishLocation: 'Container'
