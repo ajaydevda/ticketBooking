@@ -8,14 +8,6 @@ jobs:
     pool:
       vmImage: 'macOS-latest'
 
-stages:
-- stage: AndroidStage
-  pool:
-    vmImage: 'ubuntu-latest'
-  dependsOn: []
-  displayName: Android
-  jobs:
-
   - job: AndroidJob
     displayName: Android
     steps: 
