@@ -1,5 +1,5 @@
 # Flutter build
-name: $(Date:yyyyMMdd).$(Rev:r)
+name: $(Rev:r)
 
 variables:
   projectDirectory: 'covid_19_tracker'
