@@ -9,7 +9,7 @@ stages:
 
 - stage: AndroidStage
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'macos-latest'
   dependsOn: []
   displayName: Android
   jobs:
